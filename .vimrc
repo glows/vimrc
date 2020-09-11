@@ -20,7 +20,8 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '~/my-prototype-plugin'
+Plug '~/my-prototype-plugini'
+Plug 'prettier/vim-prettier', {'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'jsx', 'yaml'] }
 Plug 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown', 'RoyalBlue3'],
@@ -79,7 +80,10 @@ if has("gui_running")
     "set showtabline=0 " 隐藏Tab栏
 endif
 
- 
+ "tagbar
+nmap <F9> :TagbarToggle<CR>
+map <F5> :w<CR>
+
 "'显示行号'
 set nu
 set number
@@ -103,12 +107,21 @@ filetype plugin indent on
 "'让vimrc配置变更立即生效'
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
+"html标签自动补全
+map! <C-O> <C-Y>,
+
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
 set scrolloff=2     " 光标移动到buffer的顶部和底部时保持3行距离  
 set laststatus=2   " 启动显示状态行(1),总是显示状态行(2)  
 set foldenable      " 允许折叠  
 set foldmethod=manual   " 手动折叠 
+"搜索逐字符高亮
+noremap n :set hlsearch<cr>n
+noremap N :set hlsearch<cr>N
+noremap / :set hlsearch<cr>/
+noremap ? :set hlsearch<cr>?
+noremap * *:set hlsearch<cr>
 
 
 "set viminfo='100,n$HOME/.vim/files/info/viminfo
